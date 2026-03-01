@@ -32,7 +32,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.9'#3.9以上cython无long The version above 3.9 of cython has no long integer
+        python-version: '3.9'  # Cython 0.29.33 is not compatible with Python >3.9
 
     - name: Install system dependencies
       run: |
@@ -47,9 +47,9 @@ jobs:
     - name: Install Buildozer and dependencies
       run: |
         python -m pip install --upgrade pip
-        #下载依赖库 add your requirements
-        pip install buildozer cython==0.29.33 kivy kivymd
-        #何意味 You will need it
+        # Install core dependencies with fixed versions (match buildozer.spec)
+        pip install buildozer cython==0.29.33 kivy==2.2.1 kivymd==1.2.0
+        # Install python-for-android (required for buildozer)
         pip install python-for-android
 
     - name: Build APK with Buildozer
@@ -60,16 +60,14 @@ jobs:
         python --version
         buildozer --version
         
-        #设置环境变量解决网络问题 set environment variables to solve network problems
+        # Fix network issues for dependency download
         export BUILDODER_ALLOW_PLATFORM_EXEC=1
         export USE_COLORS=0
         
-        #开始构筑 start building
-        #buildozer -v android clean 2>&1 | tee clean.log
-        #buildozer -v android update 2>&1 | tee update.log
+        # Start building APK in debug mode
         buildozer -v android debug 2>&1 | tee buildozer.log
         
-        #查找所有APK文件并复制到bin目录 find all APK files and copy them to the bin directory
+        # Copy generated APK to current directory
         find . -name "*.apk" -exec cp {} ./ \; 2>/dev/null || true
 
     - name: Check if APK was built
@@ -99,6 +97,4 @@ jobs:
         name: build-logs
         path: |
           buildozer.log
-          #clean.log
-          #update.log
         retention-days: 7
