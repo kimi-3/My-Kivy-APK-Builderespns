@@ -27,7 +27,7 @@ android.ndk_api = 21
 p4a.gradle_dependencies = gradle:7.6.4
 p4a.bootstrap = sdl2
 p4a.gradle_options = -Dorg.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64
-android.permissions = INTERNET,ACCESS_WIFI_STATE,CHANGE_WIFI_STATE
+android.permissions =INTERNET,ACCESS_WIFI_STATE,CHANGE_WIFI_STATE,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 
 #以下为release模式需要 following is required for release mode
 
