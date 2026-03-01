@@ -3,12 +3,12 @@ title = 水质监控
 package.name = esp32mqtt
 package.domain = org.mqtt
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,ttf,otf,json
+source.include_exts = py,png,jpg,kv,atlas,ttf,otf,json,db
 #source.include_patterns = image/* 打包image目录下的文件 pack files in the image directory
 version = 0.0.1
 #fullscreen = 0
 orientation = portrait
-requirements = python3,kivy==2.2.1,kivymd==1.2.0,libiconv,libffi,paho-mqtt
+requirements = python3,kivy==2.2.1,kivymd==1.2.0,libiconv,libffi,paho-mqtt,android
 #icon.filename = icon.png
 #presplash.filename = presplash.png
 entrypoint = main.py
@@ -27,7 +27,7 @@ android.ndk_api = 21
 p4a.gradle_dependencies = gradle:7.6.4
 p4a.bootstrap = sdl2
 p4a.gradle_options = -Dorg.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64
-android.permissions =INTERNET,ACCESS_WIFI_STATE,CHANGE_WIFI_STATE,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
+android.permissions = INTERNET,ACCESS_WIFI_STATE,CHANGE_WIFI_STATE,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 
 #以下为release模式需要 following is required for release mode
 
